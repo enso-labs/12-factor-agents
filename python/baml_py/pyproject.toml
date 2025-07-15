@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "12-factor-agent-python-baml"
+version = "0.1.0"
+description = "A simple Python project using baml"
+authors = [
+  {name = "Ryan Eggleston", email = "ryan.adaptivebiz@gmail.com"}
+]
+requires-python = ">=3.13"
+dependencies = [
+    "baml-py",
+    "pydantic",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0.0",
+  "pytest-asyncio>=0.21.0",
+  "black>=23.0.0",
+  "isort>=5.12.0",
+  "flake8>=6.0.0",
+  "mypy>=1.0.0"
+]
