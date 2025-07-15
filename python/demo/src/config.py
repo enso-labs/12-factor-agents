@@ -13,16 +13,11 @@ class Config:
     APP_VERSION: str = "0.1.0"
     DEBUG: bool = os.getenv("DEBUG", "False").lower() == "true"
     
-    # API settings
-    API_HOST: str = os.getenv("API_HOST", "localhost")
-    API_PORT: int = int(os.getenv("API_PORT", "8000"))
-    
-    # Database settings (if needed)
-    DATABASE_URL: Optional[str] = os.getenv("DATABASE_URL")
-    
-    # External API settings
-    API_KEY: Optional[str] = os.getenv("API_KEY")
-    API_TIMEOUT: int = int(os.getenv("API_TIMEOUT", "30"))
+    # LLM settings
+    LLM_MODEL: str = os.getenv("LLM_MODEL", "gpt-4o-mini")
+    LLM_API_KEY: Optional[str] = os.getenv("OPENAI_API_KEY")
+    LLM_BASE_URL: str = os.getenv("LLM_BASE_URL", "https://api.openai.com/v1/chat/completions")
+    LLM_TIMEOUT: int = int(os.getenv("LLM_TIMEOUT", "30"))
 
 
 # Global config instance
