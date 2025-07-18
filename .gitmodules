@@ -1,0 +1,3 @@
+[submodule "next/examples/simple-af-agent"]
+	path = next/examples/simple-af-agent
+	url = https://github.com/ryaneggz/next-agent.git
