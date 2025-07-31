@@ -1,3 +1,6 @@
 [submodule "next/examples/simple-af-agent"]
 	path = next/examples/simple-af-agent
 	url = https://github.com/ryaneggz/next-agent.git
+[submodule "terminal/examples/gilfoyle"]
+	path = terminal/examples/gilfoyle
+	url = https://github.com/enso-labs/gilfoyle.git
