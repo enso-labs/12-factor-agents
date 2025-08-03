@@ -1,40 +1,46 @@
 import asyncio
-import json
+from dotenv import load_dotenv
 from graph import create_workflow
-from langchain_core.messages import HumanMessage, BaseMessage, AIMessage, ToolMessage
+from langchain_core.messages import HumanMessage
 from tools import get_weather, get_stock_price
 from langchain.chat_models import init_chat_model
-from dotenv import load_dotenv
+from langchain.globals import set_llm_cache
+from langchain_openai import OpenAIEmbeddings
+from langchain_redis.cache import RedisSemanticCache
+from parse import input_parser
+from time import time
 
 load_dotenv()
+set_llm_cache(
+    RedisSemanticCache(
+        redis_url="redis://localhost:6379", 
+        embeddings=OpenAIEmbeddings(),
+        ttl=30
+    )
+)
 
-def input_parser(messages: list[BaseMessage], llm_response_prefix: str = "\n\n ai_response:"):
-    xml_content = "<thread>\n"
-    for i, message in enumerate(messages):
-        if isinstance(message, AIMessage):
-            if message.tool_calls:
-                for tool_call in message.tool_calls:
-                    xml_content += f'  <event id="{tool_call["id"]}" role="tool_input" tool_name="{tool_call["name"]}">{json.dumps(tool_call["args"])}</event>\n'
-            else:
-                xml_content += f'  <event id="{message.id}" role="{message.type}">{message.content}</event>\n'
-        if isinstance(message, ToolMessage):
-            xml_content += f'  <event id="{message.tool_call_id}" role="tool_output" tool_name="{message.name}" status="{message.status}">{message.content}</event>\n'
-        else:
-            xml_content += f'  <event id="{message.id}" role="{message.type}">{message.content}</event>\n'
-    xml_content += "</thread>"
-    return xml_content + llm_response_prefix
-
-async def main():
-    query = "What is the weather in Tokyo?"
+async def main(stream=True):
+    query = "TSLA stock price?"
     workflow = create_workflow(
         llm=init_chat_model("openai:gpt-4.1-nano"),
         tools=[get_weather, get_stock_price],
         input_parser=input_parser
     )
     agent = workflow.compile()
-    async for chunk in agent.astream({"messages": [HumanMessage(content=query)]}):
-        print(chunk)
+    if stream:
+        async for chunk in agent.astream({"messages": [HumanMessage(content=query)]}):
+            print(chunk)
+    else:
+        result = await agent.ainvoke({"messages": [HumanMessage(content=query)]})
+        print(result)
 
 
 if __name__ == "__main__":
+    start_time = time()
     asyncio.run(main())
+    end_time = time()
+    print(f"Time taken: {end_time - start_time} seconds")
+    start_time = time()
+    asyncio.run(main())
+    end_time = time()
+    print(f"Time taken: {end_time - start_time} seconds (cached)")
