@@ -591,6 +591,7 @@ dependencies = [
     { name = "langchain-openai" },
     { name = "langchain-redis" },
     { name = "langgraph" },
+    { name = "langgraph-checkpoint-redis" },
     { name = "python-dotenv" },
     { name = "redis" },
 ]
@@ -602,6 +603,7 @@ requires-dist = [
     { name = "langchain-openai", specifier = ">=0.3.28" },
     { name = "langchain-redis", specifier = ">=0.2.3" },
     { name = "langgraph", specifier = ">=0.6.2" },
+    { name = "langgraph-checkpoint-redis", specifier = ">=0.0.8" },
     { name = "python-dotenv", specifier = ">=1.1.1" },
     { name = "redis", specifier = "==5.3.1" },
 ]
@@ -617,6 +619,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/73/3e/d00eb2b56c3846a0cabd2e5aa71c17a95f882d4f799a6ffe96a19b55eba9/langgraph_checkpoint-2.1.1.tar.gz", hash = "sha256:72038c0f9e22260cb9bff1f3ebe5eb06d940b7ee5c1e4765019269d4f21cf92d", size = 136256 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/4c/dd/64686797b0927fb18b290044be12ae9d4df01670dce6bb2498d5ab65cb24/langgraph_checkpoint-2.1.1-py3-none-any.whl", hash = "sha256:5a779134fd28134a9a83d078be4450bbf0e0c79fdf5e992549658899e6fc5ea7", size = 43925 },
+]
+
+[[package]]
+name = "langgraph-checkpoint-redis"
+version = "0.0.8"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "langgraph-checkpoint" },
+    { name = "redisvl" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/9e/d8/dd264cecbc5ab299181b0d1259c8d960e84bfad9b46135f4d55dc427746b/langgraph_checkpoint_redis-0.0.8.tar.gz", hash = "sha256:d0bc72bbd77cdede274d2fa4b1d028b6c3185ddfe843646834c79d590848d6fb", size = 53213 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/21/4e/d91901da7e0aa51b33b275098bcc319102773826888483e9cddd2ba1815e/langgraph_checkpoint_redis-0.0.8-py3-none-any.whl", hash = "sha256:784dfbc65278e51f2010a578118d1d626a375e397fac435a10cf6c1d7dfebae1", size = 62112 },
 ]
 
 [[package]]
