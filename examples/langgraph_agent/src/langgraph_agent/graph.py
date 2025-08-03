@@ -19,20 +19,21 @@ def create_workflow(
 	workflow = StateGraph(State)
 	llm_with_tools = llm.bind_tools(tools)
 
-	def chatbot(state: State):
+	def agent(state: State):
 		prompt = input_parser(state["messages"])
-		return {"messages": [llm_with_tools.invoke(prompt)]}
+		response = llm_with_tools.invoke(prompt)
+		return {"messages": [response]}
 
-	workflow.add_node("chatbot", chatbot)
+	workflow.add_node("agent", agent)
 
 	tool_node = ToolNode(tools=tools)
 	workflow.add_node("tools", tool_node)
 
 	workflow.add_conditional_edges(
-		"chatbot",
+		"agent",
 		tools_condition,	
 	)
 	# Any time a tool is called, we return to the chatbot to decide the next step
-	workflow.add_edge("tools", "chatbot")
-	workflow.add_edge(START, "chatbot")
+	workflow.add_edge("tools", "agent")
+	workflow.add_edge(START, "agent")
 	return workflow
