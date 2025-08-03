@@ -9,6 +9,13 @@ A simple LangGraph-based agent that demonstrates tool usage with weather and sto
 - **Streaming Output**: Real-time response streaming
 - **12-Factor Design**: Follows 12-factor app principles
 
+## Services
+
+1. **Start Redis Cache**:
+   ```bash
+   docker run -d --name redis -p 6379:6379 redis:8
+   ```
+
 ## Setup
 
 1. **Install dependencies**:
@@ -39,3 +46,4 @@ python src/langgraph_agent/main.py
 
 - Python 3.12+
 - OpenAI API key
+- Redis Instance
