@@ -1,7 +1,7 @@
 import random
 
 from langchain_core.tools import tool
-from langgraph.types import Command, interrupt
+from langgraph.types import interrupt
 
 @tool(description="Get the weather in a given city")
 def get_weather(location: str) -> str:
