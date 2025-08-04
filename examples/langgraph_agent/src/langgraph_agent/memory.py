@@ -16,9 +16,9 @@ def redis_memory(ttl=3600):
 def in_memory_memory():
     return InMemorySaver()
 
-#####################################
-# Redis Cache
-#####################################
+########################################################
+# Redis Cache (Semantic Cache) .. not used for now
+########################################################
 def redis_cache(
     name="langgraph_agent",
     prefix: str | None = None,
@@ -31,5 +31,5 @@ def redis_cache(
         redis_url=REDIS_URL, 
         embeddings=embeddings,
         ttl=ttl,
-        distance_threshold=0.9 # 1 location for weather can return diff query location result
+        distance_threshold=0.95 # 1 location for weather can return diff query location result
     )

@@ -43,17 +43,17 @@ async def main(
 
 
 if __name__ == "__main__":
-    human_response = (
-        "We, the experts are here to help! We'd recommend you check out LangGraph to build your agent."
-        " It's much more reliable and extensible than simple autonomous agents."
-    )
     start_time = time()
     # thread_id = "thread_RovbKioJ-7PfKQkoCLYGd"
     # print(f"thread_id: {thread_id}")
     asyncio.run(main(
         # thread_id=thread_id,
         query="TSLA stock price?",
-        # human_response=human_response
+        # query="I need some expert guidance for building an AI agent. Could you request assistance for me?",
+        # human_response=(
+        #     "We, the experts are here to help! We'd recommend you check out LangGraph to build your agent."
+        #     " It's much more reliable and extensible than simple autonomous agents."
+        # )
     ))
     end_time = time()
     print(f"Time taken: {end_time - start_time} seconds")
