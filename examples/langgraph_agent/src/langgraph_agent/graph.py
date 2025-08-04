@@ -14,13 +14,13 @@ class State(TypedDict):
 def create_workflow(
     llm: BaseChatModel,
     tools: list[BaseTool],
-    input_parser: Callable
+    input_parser: Callable | None = None
 ) -> StateGraph:
 	workflow = StateGraph(State)
 	llm_with_tools = llm.bind_tools(tools)
 
 	def agent(state: State):
-		prompt = input_parser(state["messages"])
+		prompt = input_parser(state["messages"]) if input_parser else state["messages"]
 		response = llm_with_tools.invoke(prompt)
 		return {"messages": [response]}
 
