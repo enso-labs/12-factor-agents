@@ -11,5 +11,6 @@ dependencies = [
     "langgraph>=0.6.2",
     "python-dotenv>=1.1.1",
     "redis==5.3.1",
-    "langchain-redis>=0.2.3",
+    "langgraph-checkpoint-redis>=0.0.8",
+    "nanoid>=2.0.0",
 ]
