@@ -1,191 +1,271 @@
-# 12-Factor Agents
+# 🧪 12-Factor Agents
 
-A collection of AI agent implementations demonstrating 12-factor app principles across different languages and frameworks. This repository showcases modern approaches to building scalable, maintainable AI-powered applications.
+> Collection of AI Agent examples to weigh various framework benefits
 
-## Overview
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Contributors](https://img.shields.io/github/contributors/enso-labs/12-factor-agents)](https://github.com/enso-labs/12-factor-agents/graphs/contributors)
+[![Forks](https://img.shields.io/github/forks/enso-labs/12-factor-agents)](https://github.com/enso-labs/12-factor-agents/network/members)
+[![Stars](https://img.shields.io/github/stars/enso-labs/12-factor-agents)](https://github.com/enso-labs/12-factor-agents/stargazers)
 
-This repository contains multiple implementations of AI agents, each following the [12-factor app methodology](https://12factor.net/) to ensure scalability, maintainability, and deployment flexibility. The agents feature intelligent conversation capabilities, tool integration, and streaming responses.
+A comprehensive monorepo showcasing different AI agent frameworks and their capabilities. Perfect for developers looking to compare **LangGraph**, **hand-rolled solutions**, and other agent architectures in production-ready examples.
 
-## Projects
+## 🚀 Why This Repository?
 
-### 🌐 Next.js Implementation
-**Location**: `next/examples/simple-af-agent/`
+As AI agent frameworks rapidly evolve in 2025, choosing the right one for your project can be challenging. This repository provides:
 
-A sophisticated AI-powered chat application built with Next.js 15 featuring:
-- **Real-time Streaming**: OpenAI-powered responses with live text generation
-- **Smart Tool Integration**: Weather information and stock data retrieval
-- **Multiple Tool Execution**: Handle multiple tool requests in a single query
-- **Memory Management**: XML-based conversation context tracking
-- **Responsive Design**: Mobile-friendly chat interface
+- **Framework Comparison**: Side-by-side implementations using different approaches
+- **Production Examples**: Real-world agent patterns, not just tutorials
+- **12-Factor Compliance**: Scalable, maintainable architectures following industry best practices
+- **Performance Insights**: Understand the trade-offs between different frameworks
 
-**Tech Stack**: Next.js 15, TypeScript, Tailwind CSS v4, OpenAI API, shadcn/ui
+## 🎯 Quick Start
 
-### 🐍 Python Implementation
-**Location**: `python/demo/`
-
-A clean Python demonstration following 12-factor app principles:
-- **Async HTTP Client**: Built with httpx for modern async operations
-- **Modular Architecture**: Services, models, and utilities separation
-- **Configuration Management**: Environment-based configuration
-- **Comprehensive Testing**: Full test suite with pytest
-
-**Tech Stack**: Python, httpx, pytest, async/await patterns
-
-### 🤖 Python BAML Implementation
-**Location**: `python/baml_py/`
-
-A BAML (Bidirectional AI Modeling Language) implementation for structured AI interactions:
-- **Structured AI Outputs**: Type-safe AI responses
-- **Resume Generation**: Specialized document generation features
-- **Client Configuration**: Flexible AI client setup
-
-**Tech Stack**: Python, BAML, structured AI modeling
-
-## Architecture Principles
-
-All implementations follow the [12-factor app methodology](https://12factor.net/):
-
-1. **Codebase**: One codebase tracked in version control
-2. **Dependencies**: Explicitly declare and isolate dependencies
-3. **Config**: Store configuration in environment variables
-4. **Backing Services**: Treat backing services as attached resources
-5. **Build, Release, Run**: Strictly separate build and run stages
-6. **Processes**: Execute as one or more stateless processes
-7. **Port Binding**: Export services via port binding
-8. **Concurrency**: Scale out via the process model
-9. **Disposability**: Maximize robustness with fast startup and graceful shutdown
-10. **Dev/Prod Parity**: Keep development, staging, and production as similar as possible
-11. **Logs**: Treat logs as event streams
-12. **Admin Processes**: Run admin/management tasks as one-off processes
-
-## Getting Started
-
-### Prerequisites
-
-- **Node.js 18+** (for Next.js implementation)
-- **Python 3.8+** (for Python implementations)
-- **OpenAI API Key** (for AI functionality)
-
-### Quick Start
-
-Choose your preferred implementation:
-
-#### Next.js Agent
 ```bash
-cd next/examples/simple-af-agent
+# Clone the repository
+git clone https://github.com/enso-labs/12-factor-agents.git
+cd 12-factor-agents
+
+# Update submodules
+make update-submodules
+
+# Choose your framework and follow the setup guide below
+```
+
+## 🏗️ Agent Examples
+
+### 🌊 LangGraph Agent
+**Location**: [`examples/langchain/langgraph_agent/`](examples/langchain/langgraph_agent/)
+
+A state-based workflow agent demonstrating **LangGraph's** graph-based architecture:
+- **Stateful Workflows**: Graph-based execution with conditional routing
+- **Tool Integration**: Weather and stock price APIs with error handling
+- **Streaming Responses**: Real-time output with Redis caching
+- **Persistence Layer**: Built-in memory and fault tolerance
+
+**Best For**: Complex multi-step tasks requiring precise control and state management
+
+```bash
+cd examples/langchain/langgraph_agent
+uv sync
+python src/langgraph_agent/main.py
+```
+
+### ⚡ Next.js Agent
+**Location**: [`examples/nextjs/simple-af-agent/`](examples/nextjs/simple-af-agent/)
+
+A hand-rolled agent implementation built with **Next.js 15** showcasing custom agent logic:
+- **Streaming UI**: Real-time response generation with optimistic updates
+- **Multi-Tool Execution**: Handle multiple API calls in parallel
+- **Memory Management**: XML-based conversation context
+- **Custom Classification**: Intent recognition without heavy frameworks
+
+**Best For**: High-performance web applications with custom agent requirements
+
+```bash
+cd examples/nextjs/simple-af-agent
 npm install
-echo "OPENAI_API_KEY=your_api_key_here" > .env.local
+echo "OPENAI_API_KEY=your_key" > .env.local
 npm run dev
 ```
 
-#### Python Demo
+### 🖥️ Terminal Agent
+**Location**: [`examples/terminal/gilfoyle/`](examples/terminal/gilfoyle/)
+
+A lightweight CLI agent built with **Ink** for terminal-based interactions:
+- **Terminal UI**: Rich command-line interface with React components
+- **Fast Startup**: Minimal dependencies for quick agent deployment
+- **Cross-Platform**: Works on Windows, macOS, and Linux
+
+**Best For**: Developer tools, automation scripts, and lightweight deployments
+
 ```bash
-cd python/demo
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-pip install -e .
-python src/main.py
+cd examples/terminal/gilfoyle
+npm install
+npm start
 ```
 
-#### Python BAML
+## 📊 Framework Comparison
+
+| **Feature** | **LangGraph** | **Next.js (Hand-rolled)** | **Terminal (Ink)** |
+|-------------|---------------|-------------------------|-------------------|
+| **Learning Curve** | High | Medium | Low |
+| **Control Level** | Precise | Full | Simple |
+| **Performance** | Medium | High | High |
+| **Streaming** | ✅ | ✅ | ⚠️ |
+| **State Management** | Built-in | Custom | Minimal |
+| **Tool Integration** | Framework | Custom | Basic |
+| **Memory/Persistence** | Redis/Built-in | XML/Custom | In-memory |
+| **Web Interface** | ❌ | ✅ | ❌ |
+| **CLI Interface** | ⚠️ | ❌ | ✅ |
+| **Production Ready** | ✅ | ✅ | ⚠️ |
+
+## 🛠️ Development Setup
+
+### Prerequisites
+
+- **Node.js 18+** (for Next.js and Terminal agents)
+- **Python 3.12+** (for LangGraph agent)
+- **Redis** (for LangGraph persistence)
+- **OpenAI API Key** (for AI functionality)
+
+### Development Commands
+
 ```bash
-cd python/baml_py
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-pip install -e .
-python main.py
+# Update all submodules
+make update-submodules
+
+# Individual project setup
+cd examples/[framework]/[project-name]
+# Follow framework-specific setup in each directory
 ```
 
-## Project Structure
+## 🏗️ Architecture Principles
+
+All implementations follow the [12-factor app methodology](https://12factor.net/) ensuring:
+
+- **📦 Dependencies**: Explicitly declared with lock files (`package-lock.json`, `uv.lock`)
+- **⚙️ Config**: Environment variables for API keys and settings
+- **🔌 Backing Services**: External APIs treated as attached resources
+- **🚀 Processes**: Stateless execution with external state management
+- **📝 Logs**: Structured logging to stdout/stderr
+- **🔄 Disposability**: Graceful shutdown and fast startup
+
+## 🎯 When to Use Each Framework
+
+### Choose **LangGraph** when:
+- Building complex, multi-step agent workflows
+- Need built-in persistence and fault tolerance
+- Require sophisticated state management
+- Want framework-provided agent abstractions
+
+### Choose **Hand-rolled (Next.js)** when:
+- Need maximum performance and control
+- Building web-based agent interfaces
+- Require custom agent logic not supported by frameworks
+- Want to minimize dependencies and framework overhead
+
+### Choose **Terminal (Ink)** when:
+- Building developer tools or CLI utilities
+- Need lightweight, fast agent deployment
+- Targeting terminal-based workflows
+- Want simple, focused agent interactions
+
+## 🚀 Monorepo Structure
 
 ```
 12-factor-agents/
-├── next/                   # Next.js implementations
-│   └── examples/
-│       └── simple-af-agent/    # AI chat application
-│           ├── app/            # Next.js App Router
-│           ├── components/     # UI components
-│           ├── lib/            # AI logic and utilities
-│           └── README.md       # Detailed project documentation
-├── python/                 # Python implementations
-│   ├── demo/               # Python demo with httpx
-│   │   ├── src/            # Main application code
-│   │   ├── tests/          # Test suite
-│   │   └── README.md       # Project documentation
-│   └── baml_py/            # BAML implementation
-│       ├── baml_src/       # BAML configuration
-│       └── main.py         # Application entry point
-├── LICENSE                 # MIT License
-├── Makefile               # Build automation
-└── README.md              # This file
+├── examples/
+│   ├── langchain/
+│   │   └── langgraph_agent/     # LangGraph implementation
+│   ├── nextjs/
+│   │   └── simple-af-agent/     # Next.js hand-rolled agent
+│   └── terminal/
+│       └── gilfoyle/            # Terminal CLI agent
+├── Makefile                     # Monorepo automation
+├── .gitmodules                  # Submodule configuration
+└── README.md                    # This comprehensive guide
 ```
 
-## Features Comparison
+## 🤝 Contributing
 
-| Feature | Next.js Agent | Python Demo | Python BAML |
-|---------|---------------|-------------|-------------|
-| Real-time Streaming | ✅ | ⚠️ | ⚠️ |
-| Tool Integration | ✅ | ⚠️ | ⚠️ |
-| Web Interface | ✅ | ❌ | ❌ |
-| Async Operations | ✅ | ✅ | ✅ |
-| Type Safety | ✅ | ✅ | ✅ |
-| 12-Factor Compliant | ✅ | ✅ | ✅ |
-| Structured AI | ⚠️ | ❌ | ✅ |
-| Memory Management | ✅ | ⚠️ | ⚠️ |
+We welcome contributions! Here's how to get started:
 
-## Development
+### 🎯 Ways to Contribute
 
-### Building All Projects
+- **📝 Add New Framework Examples**: Implement agents using CrewAI, AutoGen, Semantic Kernel, etc.
+- **🔧 Improve Existing Examples**: Enhance performance, add features, or fix bugs
+- **📚 Documentation**: Improve setup guides, add tutorials, or create comparison docs
+- **🐛 Bug Reports**: Find and report issues with clear reproduction steps
+- **💡 Feature Requests**: Suggest new agent patterns or framework integrations
 
-Use the provided Makefile for common operations:
+### 🚀 Development Workflow
+
+1. **Fork** the repository and clone your fork
+2. **Create** a feature branch: `git checkout -b feature/new-framework-example`
+3. **Develop** your changes following our patterns:
+   - Follow 12-factor app principles
+   - Add comprehensive README for new examples
+   - Include setup scripts and clear documentation
+4. **Test** your implementation thoroughly
+5. **Submit** a pull request with detailed description
+
+### 📋 Guidelines for New Agent Examples
+
+When adding a new framework implementation:
+
+- **📁 Directory Structure**: `examples/[framework-category]/[project-name]/`
+- **📝 Documentation**: Include comprehensive README with setup instructions
+- **🔧 12-Factor Compliance**: Follow environment config, dependency management
+- **🎯 Feature Parity**: Implement similar functionality to existing examples for comparison
+- **⚡ Performance**: Consider streaming, tool integration, and memory management
+
+### 💻 Local Development
 
 ```bash
-# Build all projects
-make build
+# Clone your fork
+git clone https://github.com/YOUR_USERNAME/12-factor-agents.git
+cd 12-factor-agents
 
-# Clean all build artifacts
-make clean
+# Update submodules
+make update-submodules
 
-# Run tests across all projects
-make test
+# Create feature branch
+git checkout -b feature/your-feature-name
+
+# Make changes and test
+# Submit PR when ready
 ```
 
-### Contributing
+## 🌟 Community & Growth
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes following the project's conventions
-4. Add tests for new functionality
-5. Run the test suite
-6. Submit a pull request
+### 📈 Project Stats
 
-## Environment Variables
+[![GitHub stars](https://img.shields.io/github/stars/enso-labs/12-factor-agents?style=social)](https://github.com/enso-labs/12-factor-agents)
+[![GitHub forks](https://img.shields.io/github/forks/enso-labs/12-factor-agents?style=social)](https://github.com/enso-labs/12-factor-agents/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/enso-labs/12-factor-agents)](https://github.com/enso-labs/12-factor-agents/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/enso-labs/12-factor-agents)](https://github.com/enso-labs/12-factor-agents/pulls)
 
-Each project uses environment variables for configuration. Common variables include:
+### 🎉 Recognition
 
-- `OPENAI_API_KEY`: Required for AI functionality
-- `DEBUG`: Enable debug mode
-- `API_HOST`: API host configuration
-- `API_PORT`: API port configuration
+⭐ **Star this repo** if it helps with your agent development!  
+🍴 **Fork it** to create your own agent examples  
+🔄 **Share it** with developers exploring AI agent frameworks
 
-See individual project README files for specific configuration requirements.
+## 🛡️ Environment Variables
 
-## License
+Each project uses environment variables for secure configuration:
+
+| Variable | Required | Description | Used By |
+|----------|----------|-------------|---------|
+| `OPENAI_API_KEY` | ✅ | OpenAI API access | All examples |
+| `REDIS_URL` | ⚠️ | Redis connection | LangGraph |
+| `DEBUG` | ❌ | Enable debug logging | All examples |
+| `API_PORT` | ❌ | Custom port binding | Web examples |
+
+> 💡 See individual project READMEs for framework-specific configuration
+
+## 📚 Resources & Links
+
+### 🔗 Framework Documentation
+- [LangGraph Official Docs](https://langchain-ai.github.io/langgraph/)
+- [Next.js 15 Documentation](https://nextjs.org/docs)
+- [Ink CLI Framework](https://github.com/vadimdemedes/ink)
+
+### 📖 Related Reading
+- [12-Factor App Methodology](https://12factor.net/)
+- [AI Agent Framework Comparison 2025](https://langwatch.ai/blog/best-ai-agent-frameworks-in-2025-comparing-langgraph-dspy-crewai-agno-and-more)
+- [OpenAI Agent SDK](https://platform.openai.com/docs/agents)
+
+## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## Documentation
+## 💬 Support & Community
 
-For detailed information about each implementation, see the individual README files:
-
-- [Next.js Simple AF Agent](next/examples/simple-af-agent/README.md)
-- [Python Demo](python/demo/README.md)
-- [Python BAML](python/baml_py/)
-
-## Support
-
-For questions, issues, or contributions, please use the GitHub issues page.
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/enso-labs/12-factor-agents/issues)
+- 💡 **Feature Requests**: [GitHub Discussions](https://github.com/enso-labs/12-factor-agents/discussions)
+- 📧 **Questions**: Open an issue with the `question` label
 
 ---
 
-Built with ❤️ by the **Enso Labs** team
+Built with ❤️ by the **[Enso Labs](https://github.com/enso-labs)** team and amazing contributors
