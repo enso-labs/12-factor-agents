@@ -1,6 +1,6 @@
-[submodule "next/examples/simple-af-agent"]
-	path = next/examples/simple-af-agent
+[submodule "examples/nextjs/simple-af-agent"]
+	path = examples/nextjs/simple-af-agent
 	url = https://github.com/ryaneggz/next-agent.git
-[submodule "terminal/examples/gilfoyle"]
-	path = terminal/examples/gilfoyle
+[submodule "examples/terminal/gilfoyle"]
+	path = examples/terminal/gilfoyle
 	url = https://github.com/enso-labs/gilfoyle.git
