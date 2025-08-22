@@ -2,7 +2,7 @@
 
 > Collection of AI Agent examples to weigh various framework benefits
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Contributors](https://img.shields.io/github/contributors/enso-labs/12-factor-agents)](https://github.com/enso-labs/12-factor-agents/graphs/contributors)
 [![Forks](https://img.shields.io/github/forks/enso-labs/12-factor-agents)](https://github.com/enso-labs/12-factor-agents/network/members)
 [![Stars](https://img.shields.io/github/stars/enso-labs/12-factor-agents)](https://github.com/enso-labs/12-factor-agents/stargazers)
@@ -258,7 +258,7 @@ Each project uses environment variables for secure configuration:
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the [Apache 2.0 License](LICENSE).
 
 ## 💬 Support & Community
 
